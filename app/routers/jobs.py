@@ -19,7 +19,15 @@ def get_jobs(limit: int = 10, page: int = 1, search: str = '', user_id: str = De
   
 
 #Comment
+"""
+To expand this implementation to include semantic matches, you can integrate a natural language processing (NLP) model that understands and processes synonyms and related terms. One approach is to use a pre-trained model like Word2Vec, GloVe, or BERT to find semantic similarities between job titles. Here's a step-by-step outline and an example comment in your code:
 
+Pre-process the job titles in the database: Compute vector representations for each job title using an NLP model and store them.
+Compute vector for the search term: Convert the user's search term into a vector representation using the same NLP model.
+Calculate similarity scores: Use cosine similarity or another similarity measure to find jobs in the database that are semantically similar to the search term.
+Filter results based on similarity threshold: Retrieve jobs that have a similarity score above a certain threshold.
+Here's how you can incorporate these steps into your code:
+"""
 # Expanded implementation for semantic matches
 #from sklearn.metrics.pairwise import cosine_similarity
 #import numpy as np
