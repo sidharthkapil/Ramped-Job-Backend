@@ -63,3 +63,30 @@ Here's how we can incorporate these steps into your code:
 #jobs = jobListEntity(similar_jobs)
 
 
+
+
+ """
+  Another method to search the database for jobs is by using an n-gram technique. An n-gram is a sequence of characters taken from a string. N-grams are commonly used in statistical text analysis problems, such as measuring text similarity (e.g., plagiarism checks) or even in speech recognition.
+
+
+find(
+    {
+        "$text": {
+            "$search": make_ngrams(unicode(search_input))
+        }
+    },
+    {
+        "job_name": True,
+        "company_name": True,
+        "score": {
+            "$meta": "textScore"
+        }
+    }
+).sort([("score", {"$meta": "textScore"})])
+
+
+In this MongoDB query, we convert the incoming search query into a space-separated list of n-grams so that MongoDB can perform whole-word matches in the documents indexed for text search. We instruct MongoDB to use text search on our collection with n-grams from the search query and sort the results by the text match score.
+    """
+
+
+
